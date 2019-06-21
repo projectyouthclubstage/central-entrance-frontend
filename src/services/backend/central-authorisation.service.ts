@@ -21,7 +21,7 @@ export class CentralAuthorisationService {
   }  
 
   public getUserForExternalAuth(provider: string, id: string): Observable<TokenDto> {
-    return this.http.post<TokenDto>(API_URL + '/token/' + provider.toLowerCase(), JSON.stringify(id), this.httpOptions)
+    return this.http.post<TokenDto>(API_URL + '/token/' + provider.toLowerCase(), id, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
